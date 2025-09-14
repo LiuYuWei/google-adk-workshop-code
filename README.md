@@ -1,4 +1,4 @@
-# Agentic AI 開發者日 2025 - ADK 工作坊
+# Agentic AI Developer Day Taipei 2025 ADK Workshop
 
 這個儲存庫包含了 Agentic AI 開發者日 2025 台北 ADK 工作坊的專案。
 
