@@ -1,76 +1,101 @@
 # Agentic AI Developer Day Taipei 2025 ADK Workshop
 
-這個儲存庫包含了 Agentic AI 開發者日 2025 台北 ADK 工作坊的專案。
+This repository contains projects for the Agentic AI Developer Day 2025 Taipei ADK Workshop. It features two distinct agents developed using the Google Agent Development Kit (ADK).
 
-## 🤖 記帳代理人 (Account Agent)
+## 🤖 Available Agents
 
-`account_agent` 是ㄧ個使用 Google Agent Development Kit (ADK) 開發的對話式 AI 代理人。它扮演著個人記帳助理的角色，幫助使用者透過自然語言指令來管理他們的財務交易。
+### 1. 記帳代理人 (Accounting Agent)
 
-### ✨ 功能
+The `account_agent` is a conversational AI agent designed to act as a personal accounting assistant, helping users manage their financial transactions through natural language commands.
 
-- **交易管理 (CRUD):**
-  - **新增:** 記錄新的收入或支出。
-  - **查詢:** 依據 ID、類別查詢交易，或檢視所有記錄。
-  - **更新:** 修改現有交易的詳細資訊。
-  - **刪除:** 依據 ID、類別或日期刪除交易。
-- **時間感知:**
-  - 獲取不同城市的目前時間，以正確解讀與時間相關的查詢 (例如：「昨天」、「今天」)。
-- **智慧分析:**
-  - 執行記憶體內計算以提供財務摘要，例如按類別分的每月支出，無需專用的分析工具。
+#### ✨ Features
 
-### 🛠️ 技術棧
+- **Transaction Management (CRUD):**
+  - **Create:** Record new income or expenses.
+  - **Read:** Query transactions by ID, category, or view all records.
+  - **Update:** Modify the details of existing transactions.
+  - **Delete:** Remove transactions by ID, category, or date.
+- **Time-Awareness:**
+  - Fetches the current time in different cities to correctly interpret time-related queries (e.g., "yesterday," "today").
+- **Smart Analysis:**
+  - Performs in-memory calculations to provide financial summaries, such as monthly spending by category, without needing a dedicated analysis tool.
 
-- **框架:** Google Agent Development Kit (ADK)
-- **語言:** Python
-- **資料庫:** SQLite
+#### 🛠️ Tools
 
-### 🚀 開始使用
+- `add_transaction(date, description, amount, category)`
+- `get_transactions(transaction_id, category)`
+- `update_transaction(transaction_id, date, description, amount, category)`
+- `delete_transaction(transaction_id, category, date)`
+- `get_current_time(city)`
 
-#### 先決條件
+### 2. Google 部落格新聞代理人 (Google Blog News Agent)
+
+The `google_blog_news_agent` is an agent that fetches and searches for news articles from the official Google Taiwan blog based on user-provided keywords.
+
+#### ✨ Features
+
+- **Keyword-Based Search:** Searches for articles on the Google Taiwan blog that match a specific keyword.
+- **HTML Stripping:** Cleans up the summary content by removing HTML tags for better readability.
+- **Time Queries:** Can provide the current time in any IANA timezone.
+
+#### 🛠️ Tools
+
+- `get_google_blog_news(keyword, max_results)`
+- `get_current_time(timezone_str)`
+
+## 🚀 Getting Started
+
+### Prerequisites
 
 - Python 3.9+
-- Google Gemini API 的存取權限
+- Access to the Google Gemini API
 
-#### 安裝
+### Installation
 
-1.  **複製儲存庫:**
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/LiuYuWei/agentic-ai-developer-day-2025-adk-workshop.git
     cd agentic-ai-developer-day-2025-adk-workshop
     ```
 
-2.  **安裝相依套件:**
-    建議建立一個虛擬環境。
+2.  **Install dependencies:**
+    It is recommended to create a virtual environment.
     ```bash
     python -m venv venv
     source venv/bin/activate
-    pip install google-adk
+    pip install -r requirements.txt
+    pip install -r account_agent/requirements.txt
+    pip install -r google_blog_news_agent/requirements.txt
     ```
 
-3.  **設定您的環境:**
-    您將需要使用 Gemini API 的必要憑證來設定您的環境。
+3.  **Set up your environment:**
+    You will need to configure your environment with the necessary credentials for the Gemini API.
 
-4.  **啟動 Google ADK:**
+4.  **Launch the Google ADK:**
+    The ADK will automatically discover the agents in the `account_agent` and `google_blog_news_agent` directories.
     ```bash
     adk web
     ```
 
-### 📝 使用方式
+## 📝 Usage
 
-此代理人設計為在 ADK 框架內執行。一旦執行，您就可以使用自然語言與它互動。
+These agents are designed to be run within the ADK framework. Once running, you can interact with them using natural language in the ADK web interface. Select the agent you wish to interact with from the UI.
 
-**範例提示:**
+### Example Prompts
 
-- **新增交易:**
-  > 「我昨天晚餐花了 500 元。」
+#### Accounting Agent
 
-- **查詢交易:**
-  > 「顯示我上週的所有支出。」
-  > 「這個月我在食物上花了多少錢？」
+- **Add a transaction:**
+  > "I spent 500 on dinner yesterday."
 
-- **刪除交易:**
-  > 「刪除我今天午餐的交易。」
+- **Query transactions:**
+  > "Show me all my expenses from last week."
+  > "How much did I spend on food this month?"
 
-- **財務分析:**
-  > 「這個月我的總支出是多少？」
-  > 「六月份我在哪個類別上花最多錢？」
+#### Google Blog News Agent
+
+- **Search for news:**
+  > "Find news about 'Gemini' on the Google blog."
+
+- **Get the time:**
+  > "What is the current time in 'America/New_York'?"
