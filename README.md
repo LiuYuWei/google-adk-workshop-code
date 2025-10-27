@@ -1,6 +1,6 @@
-# Agentic AI Developer Day Taipei 2025 ADK Workshop
+# Google ADK Workshop
 
-This repository contains projects for the Agentic AI Developer Day 2025 Taipei ADK Workshop. It features two distinct agents developed using the Google Agent Development Kit (ADK).
+This repository contains projects for the Google ADK Workshop. It features two distinct agents developed using the Google Agent Development Kit (ADK).
 
 ## 🤖 Available Agents
 
