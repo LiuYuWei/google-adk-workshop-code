@@ -3,6 +3,7 @@ from typing import Optional
 import datetime
 from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
+from .model.litellm_model.model_config import litellm_model
 
 # Initialize the database
 def init_db():
@@ -178,7 +179,7 @@ def get_current_time(city: str = "Taipei") -> dict:
 
 root_agent = Agent(
     name="accounting_agent",
-    model="gemini-2.0-flash",
+    model=litellm_model,
     description=(
         "Agent for accounting, primarily for users in Taiwan. It can get the current time and manage transactions."
     ),
