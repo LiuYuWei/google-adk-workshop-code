@@ -1,6 +1,5 @@
-from .get_privai_context import get_privai_files_from_privai_fileset, get_privai_file_context
+from .privai_knowledge_rag import knowledge_rag_reference
 
 __all__ = [
-    "get_privai_files_from_privai_fileset",
-    "get_privai_file_context",
+    "knowledge_rag_reference"
 ]

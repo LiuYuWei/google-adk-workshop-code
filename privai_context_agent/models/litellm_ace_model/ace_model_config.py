@@ -6,9 +6,9 @@ from google.adk.models.lite_llm import LiteLlm
 load_dotenv()
 
 # 從環境變數取得設定
-API_BASE                     = os.getenv("LITELLM_ACE_MODEL_API_BASE")
-API_KEY                      = os.getenv("LITELLM_ACE_MODEL_API_KEY")
-MODEL_NAME                   = os.getenv("LITELLM_ACE_MODEL_MODEL_NAME")
+API_BASE                     = os.getenv("LITELLM_MODEL_API_BASE")
+API_KEY                      = os.getenv("LITELLM_MODEL_API_KEY")
+MODEL_NAME                   = os.getenv("LITELLM_MODEL_MODEL_NAME")
 
 # 初始化 LiteLlm 模型
 litellm_ace_model = LiteLlm(
