@@ -69,7 +69,29 @@
     ```
 
 3.  **設定您的環境:**
-    您需要使用 Gemini API 的必要憑證來設定您的環境。
+    若要設定您的環境，請將 `.env.template` 檔案複製到每個代理程式的根目錄中，並命名為 `.env` (例如 `account_agent/.env`, `google_blog_news_agent/.env`)。然後，修改 `.env` 檔案中的變數。
+
+    ```bash
+    cp .env.template account_agent/.env
+    cp .env.template google_blog_news_agent/.env
+    ```
+
+    *   **使用 Google Gemini API:**
+        在您的 `.env` 檔案中，將 `LITELLM_MODEL_BOOL` 設定為 `False`，並提供您的 Google API 金鑰：
+        ```
+        LITELLM_MODEL_BOOL=False
+        GOOGLE_API_KEY="YOUR_GEMINI_API_KEY"
+        ```
+
+    *   **使用本地端/LiteLLM 模型:**
+        在您的 `.env` 檔案中，將 `LITELLM_MODEL_BOOL` 設定為 `True`，並為您的 LiteLLM 相容模型設定以下變數：
+        ```
+        LITELLM_MODEL_BOOL=True
+        LITELLM_MODEL_API_BASE="http://localhost:11434" # Ollama 範例
+        LITELLM_MODEL_MODEL_NAME="ollama/llama2"      # Ollama 範例
+        # 對於許多本地端模型，LITELLM_MODEL_API_KEY 是選用的
+        ```
+        這讓您可以在 Google 模型和由 Ollama 或 LiteLLM 提供的其他模型之間切換。
 
 4.  **啟動 Google ADK:**
     ADK 會自動發現在 `account_agent` 和 `google_blog_news_agent` 目錄中的代理程式。

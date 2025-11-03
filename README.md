@@ -69,7 +69,29 @@ The `google_blog_news_agent` is an agent that fetches and searches for news arti
     ```
 
 3.  **Set up your environment:**
-    You will need to configure your environment with the necessary credentials for the Gemini API.
+    To set up your environment, copy the `.env.template` file to a new file named `.env` in the root directory of each agent (e.g., `account_agent/.env`, `google_blog_news_agent/.env`). Then, modify the variables in the `.env` file.
+
+    ```bash
+    cp .env.template account_agent/.env
+    cp .env.template google_blog_news_agent/.env
+    ```
+
+    *   **For Google Gemini API:**
+        In your `.env` file, set `LITELLM_MODEL_BOOL` to `False` and provide your Google API key:
+        ```
+        LITELLM_MODEL_BOOL=False
+        GOOGLE_API_KEY="YOUR_GEMINI_API_KEY"
+        ```
+
+    *   **For Local/LiteLLM Models:**
+        In your `.env` file, set `LITELLM_MODEL_BOOL` to `True` and configure the following variables for your LiteLLM-compatible model:
+        ```
+        LITELLM_MODEL_BOOL=True
+        LITELLM_MODEL_API_BASE="http://localhost:11434" # Example for Ollama
+        LITELLM_MODEL_MODEL_NAME="ollama/llama2"      # Example for Ollama
+        # LITELLM_MODEL_API_KEY is optional for many local models
+        ```
+        This allows you to switch between Google's models and other models like those served by Ollama or LiteLLM.
 
 4.  **Launch the Google ADK:**
     The ADK will automatically discover the agents in the `account_agent` and `google_blog_news_agent` directories.
