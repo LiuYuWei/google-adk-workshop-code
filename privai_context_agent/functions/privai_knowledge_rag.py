@@ -24,7 +24,7 @@ def knowledge_rag_reference(fileset_id: str, user_query: str) -> str:
         "Authorization": "Bearer " + os.getenv("PRIVAI_API_KEY")
     }
 
-    response = requests.post(url, headers=headers, data="")
+    response = requests.post(url, headers=headers, data="", verify=True)
 
     if response.status_code == 200:
         result = response.json()

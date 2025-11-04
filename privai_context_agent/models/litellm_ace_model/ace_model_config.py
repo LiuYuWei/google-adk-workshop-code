@@ -2,6 +2,10 @@ import os
 from dotenv import load_dotenv
 from google.adk.models.lite_llm import LiteLlm
 
+import litellm
+
+litellm.ssl_verify = os.getenv("LITELLM_MODEL_API_SSL_VERIFY", "True")
+
 # 載入環境變數
 load_dotenv()
 
