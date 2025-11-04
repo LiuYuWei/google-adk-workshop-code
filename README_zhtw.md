@@ -1,6 +1,6 @@
 # Google ADK 工作坊
 
-本儲存庫包含 Google ADK 工作坊的專案。其中包含兩個使用 Google Agent Development Kit (ADK) 開發的獨特代理程式。
+本儲存庫包含 Google ADK 工作坊的專案。其中包含四個使用 Google Agent Development Kit (ADK) 開發的獨特代理程式。
 
 ## 🤖 可用代理程式
 
@@ -43,6 +43,31 @@
 - `get_google_blog_news(keyword, max_results)`
 - `get_current_time(timezone_str)`
 
+### 3. PrivAI 內容助理 (PrivAI Context Agent)
+
+`privai_context_agent` 是一個與 PrivAI API 互動的代理程式，用於從檔案集中檢索檔案及其內容，作為一個企業級的知識檢索助理。
+
+#### ✨ 功能
+
+- **知識檢索:** 根據使用者查詢，從 PrivAI 檔案集中檢索資訊。
+- **情境式回答:** 將檢索到的資訊與大型語言模型結合，生成與情境相關的回覆。
+
+#### 🛠️ 工具
+
+- `knowledge_rag_reference(fileset_id: str, user_query: str)`
+
+### 4. 時區代理 (Timezone Agent)
+
+`timezone_agent` 是一個簡單的代理程式，可以提供任何指定 IANA 時區的目前時間。
+
+#### ✨ 功能
+
+- **時間查詢:** 取得任何有效 IANA 時區 (例如 'Asia/Taipei', 'America/New_York') 的目前時間。
+
+#### 🛠️ 工具
+
+- `get_current_time(timezone_str: str)`
+
 ## 🚀 開始使用
 
 ### 先決條件
@@ -66,6 +91,8 @@
     pip install -r requirements.txt
     pip install -r account_agent/requirements.txt
     pip install -r google_blog_news_agent/requirements.txt
+    pip install -r privai_context_agent/requirements.txt
+    pip install -r timezone_agent/requirements.txt
     ```
 
 3.  **設定您的環境:**
@@ -74,6 +101,8 @@
     ```bash
     cp .env.template account_agent/.env
     cp .env.template google_blog_news_agent/.env
+    cp .env.template privai_context_agent/.env
+    cp .env.template timezone_agent/.env
     ```
 
     *   **使用 Google Gemini API:**
@@ -94,7 +123,7 @@
         這讓您可以在 Google 模型和由 Ollama 或 LiteLLM 提供的其他模型之間切換。
 
 4.  **啟動 Google ADK:**
-    ADK 會自動發現在 `account_agent` 和 `google_blog_news_agent` 目錄中的代理程式。
+    ADK 會自動發現在 `account_agent`、`google_blog_news_agent`、`privai_context_agent` 和 `timezone_agent` 目錄中的代理程式。
     ```bash
     adk web
     ```
@@ -121,3 +150,13 @@
 
 - **取得時間:**
   > 「『America/New_York』現在是什麼時間？」
+
+#### PrivAI 內容助理
+
+- **檢索知識:**
+  > 「歐盟的資料隱私法規有哪些？」(假設存在相關的檔案集)
+
+#### 時區代理
+
+- **取得時間:**
+  > 「『Asia/Tokyo』現在是什麼時間？」
