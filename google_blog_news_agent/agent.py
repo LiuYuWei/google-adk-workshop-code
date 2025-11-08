@@ -5,7 +5,6 @@ import requests
 import feedparser
 import re
 from typing import List, Dict, Union
-from .model.litellm_model.model_config import litellm_model
 
 
 def get_current_time(timezone_str: str) -> dict:
@@ -106,7 +105,7 @@ def get_google_blog_news(
 # 保持您的 Agent 定義不變
 root_agent = Agent(
     name="time_agent",
-    model=litellm_model,
+    model="gemini-2.5-flash",
     description=(
         "Agent to answer questions about the time in a city."
     ),
